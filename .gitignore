@@ -13,6 +13,9 @@
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 .idea/
+delivery/project_tasks/classes/
+delivery/project_tasks/target/
+delivery/project_tasks/project/
 
 # User-specific stuff:
 .idea/workspace.xml
