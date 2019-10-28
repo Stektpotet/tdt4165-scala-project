@@ -6,6 +6,7 @@ class AccountTests extends FunSuite {
   val bank = new Bank()
 
   test("Test 01: Valid account withdrawal") {
+
     val acc    = new Account(bank, 500)
     val result = acc.withdraw(250)
     assert(acc.getBalanceAmount == 250)
@@ -73,7 +74,6 @@ class AccountTests extends FunSuite {
 }
 
 class AccountTransferTests extends FunSuite {
-
 
   test("Test 07: Valid transfer between accounts") {
     val bank = new Bank()

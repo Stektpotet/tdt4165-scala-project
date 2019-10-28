@@ -7,7 +7,6 @@ object task1 {
   }
 
 
-
   /**
    * Generates an array containing the values 1 up to and including 50 using a for loop.
    */
@@ -20,7 +19,6 @@ object task1 {
     println(arr.mkString(" "))
     println()
   }
-
 
 
   /**
@@ -42,7 +40,6 @@ object task1 {
   }
 
 
-
   /**
    * Sums the elements in an array of integers using recursion.
    */
@@ -59,6 +56,7 @@ object task1 {
 
   /**
    * Sums an array of ints recursively.
+   *
    * @param arr the array of ints to sum.
    * @return the sum.
    */
@@ -66,7 +64,6 @@ object task1 {
     if (arr.isEmpty) 0
     else arr.head + RecursiveSum(arr.tail)
   }
-
 
 
   /**
@@ -85,6 +82,7 @@ object task1 {
 
   /**
    * Computes the nth Fibonacci number.
+   *
    * @param count the nth number in the Fibonacci sequence to find.
    * @return the Fibonacci number.
    */
