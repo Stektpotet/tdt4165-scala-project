@@ -12,7 +12,7 @@ object task2 {
    * is started. If { @code null}, this classes { @code run} method does
    * nothing.
    */
-  def Threaded(f: => Unit) = new Thread(() => f)
+  def Threaded(f: () => Unit) = new Thread(() => f())
 
   def main(args: Array[String]): Unit = {
     task2a()
