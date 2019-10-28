@@ -5,6 +5,7 @@
 *.[Dd][Ss]_[Ss]tore
 
 
+
 #### joe made this: http://goel.io/joe
 
 #### jetbrains ####
@@ -16,6 +17,12 @@
 delivery/project_tasks/classes/
 delivery/project_tasks/target/
 delivery/project_tasks/project/
+
+
+delivery/tasks/null/
+delivery/tasks/project/
+delivery/tasks/target/
+
 
 # User-specific stuff:
 .idea/workspace.xml
