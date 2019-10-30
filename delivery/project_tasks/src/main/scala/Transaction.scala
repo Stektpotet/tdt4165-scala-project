@@ -1,5 +1,3 @@
-import exceptions._
-
 import scala.collection.mutable
 
 object TransactionStatus extends Enumeration {
@@ -13,7 +11,7 @@ class TransactionQueue {
   private val data = mutable.Queue[Transaction]()
 
   // Remove and return the first element from the queue
-  def pop: Transaction = this.synchronized {
+  def pop(): Transaction = this.synchronized {
     data.dequeue()
   }
 
@@ -36,6 +34,7 @@ class TransactionQueue {
   def iterator: Iterator[Transaction] = this.synchronized {
     data.iterator
   }
+
 }
 
 class Transaction(val transactionsQueue: TransactionQueue,
@@ -46,29 +45,31 @@ class Transaction(val transactionsQueue: TransactionQueue,
                   val allowedAttempts: Int) extends Runnable {
 
   var status: TransactionStatus.Value = TransactionStatus.PENDING
-  var attempt = 0
+  var attempt: Int = 0
 
   override def run(): Unit = {
 
     def doTransaction(): Unit = {
-      // TODO - project task 3
-      // Extend this method to satisfy requirements.
-      from withdraw amount
-      to deposit amount
+      val fromSuccess = from.withdraw(amount)
+      fromSuccess match {
+        case Left(_) =>
+          // If from.withdraw succeeded, it means amount is positive. This means
+          // to.deposit cannot fail, so we don't check if it fails
+          to.deposit(amount)
+          status = TransactionStatus.SUCCESS
 
-      status = TransactionStatus.SUCCESS
+        case Right(_) =>
+          attempt += 1
+          if (attempt >= allowedAttempts) {
+            status = TransactionStatus.FAILED
+          }
+      }
     }
 
-    println("Hello frorm the theyured!")
-
-    // TODO - project task 3
-    // make the code below thread safe
     if (status == TransactionStatus.PENDING) {
       doTransaction()
-      Thread.sleep(50) // you might want this to make more room for
-      // new transactions to be added to the queue
+      Thread.sleep(50)
     }
-
-
   }
+
 }
